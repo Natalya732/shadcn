@@ -11,11 +11,13 @@
   "compilerOptions": {
     "baseUrl": ".",
     "module": "ESNext",
+    "strict" : true,
+    "jsx": "react-jsx",
     "moduleResolution": "Node",
     "target": "ESNext",
     "esModuleInterop": true,
     "types": [
-      "node"
+      "node", " react", "react-dom"
     ],
     "paths": {
       "@/*": [
