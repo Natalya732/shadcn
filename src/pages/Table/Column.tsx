@@ -1,21 +1,23 @@
+import { Button } from "@/components/ui/button";
+import { columnType } from "@/Definitions/TypeDefinition";
 import { ColumnDef } from "@tanstack/react-table";
+import { ArrowUpDown } from "lucide-react";
 
-export type columnType = {
-  id: string;
-  priority: "High" | "Medium" | "Low";
-  status: "Open" | "In Progress" | "Closed";
-  labels: string[];
-  name: string;
-  dueDate: string;
-  createdDate: string;
-  assignee: string;
-  comment?: string;
-};
 
 export const columns: ColumnDef<columnType>[] = [
   {
     accessorKey: "priority",
-    header: "Priority",
+    header: ({ column }) => {
+      return (
+        <Button
+          variant="ghost"
+          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+        >
+          Priority
+          <ArrowUpDown className="ml-2 h-4 w-4" />
+        </Button>
+      );
+    },
   },
   {
     accessorKey: "status",
